@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><%= title %></title>
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/simple-sidebar.css" rel="stylesheet">
+    <!-- Spliter CSS -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <!-- Jquery JS Tree CSS -->
+    <link href="/jQuery TreeViewJS Plugin Demo_files/jquery.treeView.css" rel="stylesheet" type="text/css">
+    <!-- Terminal Scripts -->
+    <link rel="stylesheet" href="/xterm/dist/xterm.css" />
+    <link rel="stylesheet" href="/xterm/dist/addons/fullscreen/fullscreen.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
+    <script src="/xterm/dist/xterm.js"></script>
+    <script src="/xterm/dist/addons/fit/fit.js"></script>
+    <script src="/xterm/dist/addons/attach/attach.js"></script>
+    <script src="/xterm/dist/addons/winptyCompat/winptyCompat.js"></script>
+    <!-- ------------------------------------------------------- -->
+    <!-- Tab Menu CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Splitter JS file -->
+    <script src="javascripts/split.min.js"></script>
+    <!-- Style Sheets  -->
+    <style>
+        /*---------------- ACE Editor CSS ----------------- */
+        #parent {
+            /* width: 50%; */
+            /* width: inherit !important; */
+            /* height: 600px; */
+            /* display: inline-block; */
+            position: relative;
+        }
+
+        #editor {
+            width: 50%;
+            /* width: inherit !important; */
+            height: 600px;
+            /* position: absolute; */
+            /* display: inline-block; */
+            
+        }
+
+        /* ---------------------------- Nav-BAR------------- */
+        .navbar-toggler-icon {
+            /* background-image: url(data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000…p='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e); */
+        }
+
+        .fa-bars:before {
+            content: "\f0c9";
+        }
+
+        .fa-1x {
+            font-size: 1.5rem;
+        }
+
+        .fa,
+        .fas {
+            font-weight: 900;
+        }
+
+        .nav-tabs {
+            float: right;
+            /* bottom: 20px; */
+            padding: 10px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col" style="padding: 0px;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">current</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Disabled</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Files </div>
+            <div class="list-group list-group-flush">
+                <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a> -->
+                <!-- href="#" >Explorer</a>  -->
+                <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a> -->
+                <!-- <div class="list-group-item list-group-item-action bg-light">&nbsp;</div> -->
+                <div class="treeview-container">
+                    <ul class="treeview"></ul>
+                </div>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+             -->
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <!-- -------------------- Tabs Content--------------------------------- -->
+             <div class="container">  
+                <!--  Toggle Button-->
+                <span id="menu-toggle" style="font-size: 20px; cursor: pointer;">&#9776;</span>
+                <!-- Tabs Menu List -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#menu1">Menu 1</a></li>
+                    <li><a href="#menu2">Menu 2</a></li>
+                    <li><a href="#menu3">Menu 3</a></li>
+                </ul>
+                <div class="tab-content">
+                  
+                    <div id="home" class="tab-pane fade in active"></div>
+                    <div id="menu1" class="tab-pane fade"></div>
+                    <div id="menu2" class="tab-pane fade"></div>
+                    <div id="menu3" class="tab-pane fade"></div>
+                </div>
+                </div>  
+            
+        </div>
+            <!-- ------------------------------------------------------------------ -->
+            <div class="content">
+                <div class="split a" id="parent">
+                    <div id="editor" ></div>
+                </div>
+                <div class="split b" id="terminal"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript / JS Tree Script / Ace Editor Script-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/jQuery TreeViewJS Plugin Demo_files/jquery.min.js"></script>
+    <script src="/jQuery TreeViewJS Plugin Demo_files/jquery.treeView.js"></script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <!--  -->
+    <script>
+        //--------------- Jquery AJAX--------------------
+        //==============================================
+        //--------------------Side-Bar JS Tree----------------------
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/explorer"
+            }).done(function (res) {
+                console.log(res)
+                GenTree(res, '.treeview', '');
+                $('.treeview').treeView();
+            });
+
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+
+            $('body').on('click', '.node', function (e) {
+
+
+                console.log($(this).attr('path'));
+                var filename = $(this).attr('path');
+
+                $.ajax({
+                    url: "/fileOpen",
+                    data: { 'filename': filename }
+                }).done(function (res) {
+                    console.log(res)
+                    editor.session.setValue(res);
+                });
+
+                e.stopPropagation();
+                //openCode($(this).attr('path'));
+
+
+            });
+            // $.ajax({
+            //     url: "/Xterm"
+            // }).done(function (res) {
+            //     console.log(res);
+            //     setTerm();
+            // });
+
+            //--------------------- Tabs Menu ---------------------------------
+
+            $(".nav-tabs a").click(function () {
+                $(this).tab('show');
+            });
+
+        });
+        //------------------------- Spliter --------------------------------------
+
+        Split(['.a', '.b'], {
+            gutterSize: 5,
+            sizes: [50, 50],
+            minSize: [200, 200]
+        });
+
+        //-------------------------- Side bar JS Tree Generator----------------------------
+
+        function GenTree(lst, cntr, path) {
+            $.each(lst, function (i, node) {
+
+                var cls = [];
+                cls.push(node.content != null ? 'contains-items' : '');
+                cls.push('node')
+                var li = $('<li/>', { 'class': cls.join(' '), 'path': path + '/' + node.name }).text(node.name).appendTo(cntr);
+                $(li).append(ul);
+
+                if (node.content != null) {
+
+                    var ul = $('<ul/>');
+                    $(li).append(ul);
+                    GenTree(node.content, ul, path + '/' + node.name);
+                }
+
+
+            });
+        }
+
+        //-------   Ace Editor ------------------------------
+
+        var editor = ace.edit("editor", {
+            theme: "ace/theme/github",
+            mode: "ace/mode/java",
+            placeholder: "choose file to edit"
+        });
+        //var editor = ace.edit("editor");
+        //editor.setTheme("ace/theme/github");
+        //var mode = "ace/mode/html";
+        //editor.getSession().setMode("ace/mode/javascript");
+        editor.session.setUseSoftTabs(true);
+        editor.setShowFoldWidgets(true);
+        editor.setOptions({
+
+            fontSize: "100%"
+        });
+
+        // -------------- Terminal -------------------------
+
+
+        Terminal.applyAddon(attach);
+        Terminal.applyAddon(fit);
+        Terminal.applyAddon(winptyCompat);
+        // The terminal
+        term = new Terminal();
+        // No idea what this does
+        term.winptyCompatInit();
+        // This kinda makes sense
+        const container = document.getElementById('terminal');
+        term.open(container);
+        // Open the websocket connection to the backend
+        const protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://';
+        const port = location.port ? `:${location.port}` : '';
+        const socketUrl = `${protocol}${location.hostname}${port}/shell`;
+        const socket = new WebSocket(socketUrl);
+        // Attach the socket to the terminal
+        socket.onopen = (ev) => {
+            term.attach(socket);
+            console.log(socket)
+            console.log(term);
+        };
+        term._core.emit('ls\n');
+        function updateTerminalSize() {
+            var cols = parseInt(40, 15);
+            var rows = parseInt(24, 19);
+            var width = (cols * term._core.renderer.dimensions.actualCellWidth + term._core.viewport.scrollBarWidth + 2).toString() + 'px';
+            var height = (rows * term._core.renderer.dimensions.actualCellHeight).toString() + 'px';
+            container.style.width = width;
+            container.style.height = height;
+            term.fit();
+        }
+
+        updateTerminalSize();
+
+        //------------------------------------------------------------------------
+
+
+
+    </script>
+</body>
+
+</html>

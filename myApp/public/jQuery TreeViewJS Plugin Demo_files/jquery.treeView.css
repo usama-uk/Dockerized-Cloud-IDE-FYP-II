@@ -1,0 +1,44 @@
+
+/* TreeJS styling */
+
+
+.treeview {
+  font-size: 1.0rem;
+}
+
+.treeview,
+.treeview ul {
+  list-style-type: none;
+  overflow: hidden;
+  padding-inline-start: 0px;
+}
+
+/* ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  
+} */
+
+.treeview li {
+  text-indent: 0.25%;
+  /* margin-top: 0.2em; */
+  padding: 0 0 0 1.5em;
+  /* line-height: 22px; */
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+}
+
+.treeview li.contains-items { background-image: url('icons/arrow-left.png'); }
+
+.treeview li.items-expanded { background-image: url('icons/arrow-down.png'); }
+
+/* background: url(images/tree_icons.png) no-repeat -208px 0; *//*close folder*/
+/* background: url(images/tree_icons.png) no-repeat -224px 0; *//*open folder*/
+
+.treeview>li:hover { cursor: pointer; }
+
+.treeview span:hover { background-color: rgba(246, 246, 246, 0.7); }
